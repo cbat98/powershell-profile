@@ -1,6 +1,7 @@
 oh-my-posh init pwsh --config C:\Users\cbatten\AppData\Local\Programs\oh-my-posh\themes\bubbles-edit.omp.json | Invoke-Expression
 
-$workingFolder = "D:\dev\repos\TechOps-Shared\Team\charlieb"
+$repos = "D:\dev\repos"
+$workingFolder = "$repos\TechOps-Shared\Team\charlieb"
  
 # Functions  
 function Test-Administrator
@@ -42,8 +43,6 @@ $fileDateStamp = $dateStamp.tostring("yyyy-MM-dd")
 $fileName = $fileDateStamp + " - PS Console Output - $($env:username) - $($pid).log"
 $logLocation = [environment]::getfolderpath("mydocuments") +"\PSLogs"
 $fullLogFile = $logLocation + "\" + $fileName
-   
-$orgName="microlise"
   
 ###################################################
   
@@ -60,7 +59,7 @@ Set-ExecutionPolicy -scope Process bypass
   
 if (!(test-path $workingFolder)) {
     # Create log destination if it does not exist
-    $result = New-Item -ItemType Directory -Force -Path $workingFolder
+    New-Item -ItemType Directory -Force -Path $workingFolder
     write-host "Created $($workingFolder)" -foreground yellow
 }
   
@@ -68,7 +67,7 @@ if (!(test-path $workingFolder)) {
 # Create log file
 if (!(test-path $logLocation)) {
     # Create log destination if it does not exist
-    $result = New-Item -ItemType Directory -Force -Path $logLocation
+    New-Item -ItemType Directory -Force -Path $logLocation
     write-host "Created $($logLocation)" -foreground yellow
 }
   
@@ -85,5 +84,4 @@ start-transcript -path $fullLogFile -force  -noclobber
   
 #set-location $workingFolder
 Set-Alias ll listJustNames
-$repos = "d:\dev\repos\"
 Set-Alias grep findstr
