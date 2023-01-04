@@ -54,7 +54,7 @@ Set-ExecutionPolicy -scope Process bypass
   
 if (!(test-path $workingFolder)) {
     # Create log destination if it does not exist
-    $result = New-Item -ItemType Directory -Force -Path $workingFolder
+    New-Item -ItemType Directory -Force -Path $workingFolder
     write-host "Created $($workingFolder)" -foreground yellow
 }
   
@@ -62,7 +62,7 @@ if (!(test-path $workingFolder)) {
 # Create log file
 if (!(test-path $logLocation)) {
     # Create log destination if it does not exist
-    $result = New-Item -ItemType Directory -Force -Path $logLocation
+    New-Item -ItemType Directory -Force -Path $logLocation
     write-host "Created $($logLocation)" -foreground yellow
 }
   
