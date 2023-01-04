@@ -1,6 +1,5 @@
-oh-my-posh init pwsh --config C:\Users\cbatten\AppData\Local\Programs\oh-my-posh\themes\bubbles-edit.omp.json | Invoke-Expression
-
-$workingFolder = "D:\dev\repos\TechOps-Shared\Team\charlieb"
+$repos = "C:\users\msup-charliebatten\repos"
+$workingFolder = "$repos\TechOps-Shared\Team\charlieb"
  
 # Functions  
 function Test-Administrator
@@ -31,9 +30,6 @@ $workingFolderPath = ";" + $workingFolder + "\Common"
 $modulePath = $workingFolder + "\Modules;"
 $env:path += $workingFolderPath
 $env:path += ";" + (Get-Item "Env:ProgramFiles(x86)").Value + "\Git\bin"
-$env:path += ";" + "c:\ffmpeg"
-$env:path += ";" + "C:\Program Files\Neovim\bin\"
-$env:path += ";" + "C:\msys64\mingw64\bin\"
 $env:psmodulePath = $modulePath + $env:psmodulePath
   
   
@@ -42,8 +38,6 @@ $fileDateStamp = $dateStamp.tostring("yyyy-MM-dd")
 $fileName = $fileDateStamp + " - PS Console Output - $($env:username) - $($pid).log"
 $logLocation = [environment]::getfolderpath("mydocuments") +"\PSLogs"
 $fullLogFile = $logLocation + "\" + $fileName
-   
-$orgName="microlise"
   
 ###################################################
   
@@ -85,5 +79,4 @@ start-transcript -path $fullLogFile -force  -noclobber
   
 #set-location $workingFolder
 Set-Alias ll listJustNames
-$repos = "d:\dev\repos\"
 Set-Alias grep findstr
